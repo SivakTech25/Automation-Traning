@@ -49,23 +49,23 @@ function eligiblityCheck(getData:Customer_Details):string
 {
 /******declaring and intializing values to check eligiblity conditions*****/
     const Good_Credit_Score:
-    boolean=customerDetails.creditScore>750;
+    boolean=getData.creditScore>750;
     const Avg_Credit_Score:
-    boolean=customerDetails.creditScore>=650&&customerDetails.creditScore<=750;
+    boolean=getData.creditScore>=650&&getData.creditScore<=750;
     const Income_Status:
-    boolean=customerDetails.income>=50000;
+    boolean=getData.income>=50000;
     const Good_Dti_Ratio:
-    boolean=customerDetails.debtToIncomeRatio<40;
+    boolean=getData.debtToIncomeRatio<40;
     const Emp_Status:
-    boolean=customerDetails.isEmployed;
+    boolean=getData.isEmployed;
 /******************************Checking the credit score using conditional statement************************/
     console.log("Checking the Credit Score......");
     if (Good_Credit_Score)
     {return "Congrats! Your loan is approved";}
     else if(Avg_Credit_Score&&Income_Status)
     {
-        console.log(`You have a Average credit Score: ${customerDetails.creditScore} 
-            Your Income is: ${customerDetails.income} rs\n
+        console.log(`You have a Average credit Score: ${getData.creditScore} 
+            Your Income is: ${getData.income} rs\n
             Your Loan will be approved based on Dti & Employment status\n`);
         if(Good_Dti_Ratio&&Emp_Status){return "Congrats! Your loan is approved";}
         else{
