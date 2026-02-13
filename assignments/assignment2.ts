@@ -26,12 +26,6 @@ income = 55000.0;
 isEmployed = true;
 debtToIncomeRatio = 35.0;*/
 
-
-/*****Eligiblity Check Conditions for loan approval*****/
-/*Condition1-  if cibil>750->loan approved, condition2 - else if cibil between 650 to 750 - 
-check further condition
-if salary >=500000 & employed & DTI ratio ->approved, else - loan denied*/
-
 /*****Creating object for Customer Details*****/
 interface Customer_Details
 {
@@ -44,10 +38,10 @@ interface Customer_Details
 const customerDetails:Customer_Details=
 {
 customerName:"John Doe",
-creditScore:633,
+creditScore:766,
 income:40000,
 isEmployed:true,
-debtToIncomeRatio:35
+debtToIncomeRatio:20
 }
 
 /******declaring and intializing values to check eligiblity conditions*****/
@@ -64,39 +58,29 @@ debtToIncomeRatio:35
 
 /*****************************Eligiblity Check Conditions for loan approval************************************/
 
-function eligiblityCheck(getData:Customer_Details):void
+function eligiblityCheck(getData:Customer_Details):string
 {
 /******************************Checking the credit score using conditional statement************************/
-        console.log("Checking the Credit Score......");
+    console.log("Checking the Credit Score......");
     if (Good_Credit_Score)
-    {
-        console.log(`"Congrats!!!!You have a Good credit Score: ${customerDetails.creditScore} 
-            \n Your Loan is approved.....\n"`);
-    }
+    {return "Congrats! Your loan is approved";}
     else if(Avg_Credit_Score&&Income_Status)
     {
         console.log(`You have a Average credit Score: ${customerDetails.creditScore} 
             Your Income is: ${customerDetails.income} rs\n
             Your Loan will be approved based on Dti & Employment status\n`);
-        console.log("Checking the Dti ratio & Employment status.....\n");
-        if(Good_Dti_Ratio&&Emp_Status)
-        {
-        console.log(`Your Dti ratio: ${customerDetails.debtToIncomeRatio} 
-            \nYour Employment Status is: ${customerDetails.isEmployed}\n\n "Congrats!!, Your Loan is approved..."`);
-        }
-        else{console.log("Sorry!!!Your Loan approval is denied due to Employment status or DTI status...");}
+        if(Good_Dti_Ratio&&Emp_Status){return "Congrats! Your loan is approved";}
+        else{return "Denied due to the customer not employed or DTI ratio is High";}
     }
     else
         {
-            if(Avg_Credit_Score){ console.log("Sorry!!! Your Loan approval is denied due to your income is not eligible")}
-            else{console.log("Sorry!!!Your Loan approval is denied due to bad credit score...");}
+            if(Avg_Credit_Score){return "Denied due to the customer does not meet the required income"; }
+            else{return "Denied due to the customer cibil score is very low";}
         }
     }
-
-  
 /******************************Printing the cutomer details********************************/
 console.log("Cutomer Details:\n", customerDetails);
 
 /********************************Fuction to check the loan approval*************************/
-eligiblityCheck(customerDetails);
+console.log(eligiblityCheck(customerDetails));
 
