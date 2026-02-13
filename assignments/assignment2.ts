@@ -49,11 +49,7 @@ income:40000,
 isEmployed:true,
 debtToIncomeRatio:35
 }
-/*****Eligiblity Check Conditions for loan approval*****/
 
-function eligiblityCheck(getData:Customer_Details):void
-{
-    
 /******declaring and intializing values to check eligiblity conditions*****/
     const Good_Credit_Score:
     boolean=customerDetails.creditScore>750;
@@ -66,6 +62,10 @@ function eligiblityCheck(getData:Customer_Details):void
     const Emp_Status:
     boolean=customerDetails.isEmployed;
 
+/*****************************Eligiblity Check Conditions for loan approval************************************/
+
+function eligiblityCheck(getData:Customer_Details):void
+{
 /******************************Checking the credit score using conditional statement************************/
         console.log("Checking the Credit Score......");
     if (Good_Credit_Score)
