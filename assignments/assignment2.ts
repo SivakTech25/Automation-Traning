@@ -38,12 +38,15 @@ interface Customer_Details
 const customerDetails:Customer_Details=
 {
 customerName:"John Doe",
-creditScore:766,
-income:40000,
-isEmployed:true,
-debtToIncomeRatio:20
+creditScore:655,
+income:50000,
+isEmployed:false,
+debtToIncomeRatio:33
 }
+/*****************************Eligiblity Check Conditions for loan approval************************************/
 
+function eligiblityCheck(getData:Customer_Details):string
+{
 /******declaring and intializing values to check eligiblity conditions*****/
     const Good_Credit_Score:
     boolean=customerDetails.creditScore>750;
@@ -55,11 +58,6 @@ debtToIncomeRatio:20
     boolean=customerDetails.debtToIncomeRatio<40;
     const Emp_Status:
     boolean=customerDetails.isEmployed;
-
-/*****************************Eligiblity Check Conditions for loan approval************************************/
-
-function eligiblityCheck(getData:Customer_Details):string
-{
 /******************************Checking the credit score using conditional statement************************/
     console.log("Checking the Credit Score......");
     if (Good_Credit_Score)
@@ -70,7 +68,11 @@ function eligiblityCheck(getData:Customer_Details):string
             Your Income is: ${customerDetails.income} rs\n
             Your Loan will be approved based on Dti & Employment status\n`);
         if(Good_Dti_Ratio&&Emp_Status){return "Congrats! Your loan is approved";}
-        else{return "Denied due to the customer not employed or DTI ratio is High";}
+        else{
+            if(Good_Dti_Ratio){return "Denied due to the customer is not employed......";}
+            else return "Denied due to the customer's DTI ratio is High" ;
+        }
+            return "Denied due to the customer not employed or DTI ratio is High";
     }
     else
         {
