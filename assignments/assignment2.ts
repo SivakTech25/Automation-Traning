@@ -44,8 +44,8 @@ interface Customer_Details
 const customerDetails:Customer_Details=
 {
 customerName:"John Doe",
-creditScore:720,
-income:50000,
+creditScore:633,
+income:40000,
 isEmployed:true,
 debtToIncomeRatio:35
 }
@@ -58,7 +58,7 @@ function eligiblityCheck(getData:Customer_Details):void
     const Good_Credit_Score:
     boolean=customerDetails.creditScore>750;
     const Avg_Credit_Score:
-    boolean=customerDetails.creditScore>=650&&customerDetails.creditScore<=750&&customerDetails.income>=50000;
+    boolean=customerDetails.creditScore>=650&&customerDetails.creditScore<=750;
     const Income_Status:
     boolean=customerDetails.income>=50000;
     const Good_Dti_Ratio:
@@ -88,7 +88,8 @@ function eligiblityCheck(getData:Customer_Details):void
     }
     else
         {
-            console.log("Sorry!!!Your Loan approval is denied due to bad credit score...");
+            if(Avg_Credit_Score){ console.log("Sorry!!! Your Loan approval is denied due to your income is not eligible")}
+            else{console.log("Sorry!!!Your Loan approval is denied due to bad credit score...");}
         }
     }
 
