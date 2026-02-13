@@ -1,0 +1,101 @@
+/*Assignment-2 (Conditional Statements)
+
+A bank evaluates loan applicants based on the following criteria:
+1. Credit Score:
+o If the credit score is above 750, the loan is automatically approved.
+o If the credit score is between 650 and 750, additional checks are performed.
+o If the credit score is below 650, the loan is denied.
+2. Income:
+o For credit scores between 650 and 750, the customer’s income must be at least $50,000
+for the loan to be considered.
+
+3. Employment Status:
+o If the customer’s income is at least 50,000, the system checks whether the customer is
+employed.
+o If the customer is unemployed, the loan is denied.
+4. Debt-to-Income Ratio:
+o If the customer is employed, the system checks the debt-to-income (DTI) ratio.
+o If the DTI ratio is less than 40%, the loan is approved.
+o If the DTI ratio is 40% or greater, the loan is denied.
+
+Create common function and then based on below details, print whether user is eligible to get the loan
+or not
+customerName = "John Doe";
+creditScore = 720;
+income = 55000.0;
+isEmployed = true;
+debtToIncomeRatio = 35.0;*/
+
+
+/*****Eligiblity Check Conditions for loan approval*****/
+/*Condition1-  if cibil>750->loan approved, condition2 - else if cibil between 650 to 750 - 
+check further condition
+if salary >=500000 & employed & DTI ratio ->approved, else - loan denied*/
+
+/*****Creating object for Customer Details*****/
+interface Customer_Details
+{
+    customerName:string,
+    creditScore:number,
+    income:number,
+    isEmployed:boolean,
+    debtToIncomeRatio:number
+}
+const customerDetails:Customer_Details=
+{
+customerName:"John Doe",
+creditScore:720,
+income:50000,
+isEmployed:true,
+debtToIncomeRatio:35
+}
+/*****Eligiblity Check Conditions for loan approval*****/
+
+function eligiblityCheck(getData:Customer_Details):void
+{
+    
+/******declaring and intializing values to check eligiblity conditions*****/
+    const Good_Credit_Score:
+    boolean=customerDetails.creditScore>750;
+    const Avg_Credit_Score:
+    boolean=customerDetails.creditScore>=650&&customerDetails.creditScore<=750&&customerDetails.income>=50000;
+    const Income_Status:
+    boolean=customerDetails.income>=50000;
+    const Good_Dti_Ratio:
+    boolean=customerDetails.debtToIncomeRatio<40;
+    const Emp_Status:
+    boolean=customerDetails.isEmployed;
+
+/******************************Checking the credit score using conditional statement************************/
+        console.log("Checking the Credit Score......");
+    if (Good_Credit_Score)
+    {
+        console.log(`"Congrats!!!!You have a Good credit Score: ${customerDetails.creditScore} 
+            \n Your Loan is approved.....\n"`);
+    }
+    else if(Avg_Credit_Score&&Income_Status)
+    {
+        console.log(`You have a Average credit Score: ${customerDetails.creditScore} 
+            Your Income is: ${customerDetails.income} rs\n
+            Your Loan will be approved based on Dti & Employment status\n`);
+        console.log("Checking the Dti ratio & Employment status.....\n");
+        if(Good_Dti_Ratio&&Emp_Status)
+        {
+        console.log(`Your Dti ratio: ${customerDetails.debtToIncomeRatio} 
+            \nYour Employment Status is: ${customerDetails.isEmployed}\n\n "Congrats!!, Your Loan is approved..."`);
+        }
+        else{console.log("Sorry!!!Your Loan approval is denied due to Employment status or DTI status...");}
+    }
+    else
+        {
+            console.log("Sorry!!!Your Loan approval is denied due to bad credit score...");
+        }
+    }
+
+  
+/******************************Printing the cutomer details********************************/
+console.log("Cutomer Details:\n", customerDetails);
+
+/********************************Fuction to check the loan approval*************************/
+eligiblityCheck(customerDetails);
+

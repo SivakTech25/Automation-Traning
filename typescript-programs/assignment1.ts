@@ -37,7 +37,7 @@ function getAccountBalance() : number
     let accountBalance = 1000.50;
     return accountBalance;
 }
-interface personInfo
+interface person
 {
     phNo:number|string,
     emailAdd:string,
@@ -48,7 +48,7 @@ interface personInfo
     bloodType:string,
     birthPlace:string
 }
-let person:personInfo=
+let person:person=
 {
     phNo:"123-456-7890",
     emailAdd:"john.doe@example.com",

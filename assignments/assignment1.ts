@@ -4,7 +4,7 @@
 //3. Person's phone number: "123-456-7890"
 //4. Amount of money in a customer's bank account: 1000.50
 //5. Person's email address: "john.doe@example.com"
-//6. Coordinates of a location (latitude, longitude): 37.7749, -122.4194
+    //6. Coordinates of a location (latitude, longitude): 37.7749, -122.4194
 //7. Person's marital status: true or false
 //8. Person's occupation: "Software Engineer"
 //9. Person's favourite colour: "Blue"
