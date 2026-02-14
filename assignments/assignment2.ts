@@ -27,6 +27,7 @@ isEmployed = true;
 debtToIncomeRatio = 35.0;*/
 
 /*****Creating object for Customer Details*****/
+
 interface Customer_Details
 {
     customerName:string,
@@ -38,10 +39,10 @@ interface Customer_Details
 const customerDetails:Customer_Details=
 {
 customerName:"John Doe",
-creditScore:655,
-income:50000,
-isEmployed:false,
-debtToIncomeRatio:33
+creditScore:729,
+income:60000,
+isEmployed:true,
+debtToIncomeRatio:25
 }
 /*****************************Eligiblity Check Conditions for loan approval************************************/
 
@@ -62,24 +63,24 @@ function eligiblityCheck(getData:Customer_Details):string
     console.log("Checking the Credit Score......");
     if (Good_Credit_Score)
     {return "Congrats! Your loan is approved";}
-    else if(Avg_Credit_Score&&Income_Status)
+    else if(Avg_Credit_Score)
     {
-        console.log(`You have a Average credit Score: ${getData.creditScore} 
-            Your Income is: ${getData.income} rs\n
-            Your Loan will be approved based on Dti & Employment status\n`);
-        if(Good_Dti_Ratio&&Emp_Status){return "Congrats! Your loan is approved";}
-        else{
-            if(Good_Dti_Ratio){return "Denied due to the customer is not employed......";}
-            else return "Denied due to the customer's DTI ratio is High" ;
-        }
-            return "Denied due to the customer not employed or DTI ratio is High";
-    }
-    else
+        if(Income_Status)
         {
-            if(Avg_Credit_Score){return "Denied due to the customer does not meet the required income"; }
-            else{return "Denied due to the customer cibil score is very low";}
+            if(Emp_Status)
+            {
+                if(Good_Dti_Ratio)
+                {
+                    return("Congrats, loan is approved...");
+                }
+                else return("Loan is rejected due to High DTI ratio");
+            }
+            else return("loan is rejected due to unemployment status");
         }
+        else return("loan is rejected due to less income");    
     }
+    else return("loan is rejected due to bad credit score......");
+}
 /******************************Printing the cutomer details********************************/
 console.log("Cutomer Details:\n", customerDetails);
 
