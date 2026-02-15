@@ -14,21 +14,23 @@ Average Marks: 89.0*/
 
 let studentName:string[]=["Suresh","Mahesh","Naresh"];// array to store student name
 let studentActualMarks:number[]=[75,80,82];//array to store students actuall marks
+let updatedMarks:number[]=[];
 
 //*******funtion to update marks and store it in another array and priting the final score*********/
-function updateMark(finalMark:number[],addMarks:number):void
+function updateMark(actualMark:number[],addMarks:number):void
 {
     let avg:number=0;
     console.log("Updated Marks:");
-   for(let i:number=0;i<finalMark.length;i++)
+   for(let i:number=0;i<actualMark.length;i++)
         {
-            finalMark[i]+=addMarks;//adding the marks to finalmarks array
-            avg+= finalMark[i];
-            console.log(studentName[i],":", finalMark[i]);
+            updatedMarks[i]=actualMark[i]+addMarks;//adding the marks to finalmarks array
+            avg+= updatedMarks[i];
+            console.log(studentName[i],":", updatedMarks[i]);
         }
-        avg=avg/finalMark.length;
+        avg=avg/actualMark.length;
         console.log("Average marks:",avg);   
 }
 
 //*******Callig function to update student marks and print the updated marks******* */
 updateMark(studentActualMarks,10);
+
