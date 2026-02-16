@@ -6,7 +6,10 @@ function getTransactionDetails(transData:number[]):{
     suspiciousAmount:number[],
     totalCredited:number,
     totalDebited:number,
-    remainingBalance:number
+    remainingBalance:number,
+    debitCount:number,
+    creditCount:number,
+    suspiciousCount:number
     }
 {
 
@@ -16,31 +19,31 @@ let suspiciousAmount:number[]=[];
 let totalCredited:number=0;
 let totalDebited:number=0;
 let remainingBalance:number=0;
-let p:number=0;
-let q:number=0;
-let r:number=0;
+let creditCount:number=0;
+let debitCount:number=0;
+let suspiciousCount:number=0;
 
 for(let i=0;i<transData.length;i++){
         if(transData[i]>0){              
-            creditedData[p]=transData[i];
+            creditedData[creditCount]=transData[i];
             totalCredited+=transData[i];
-            p++;
+            creditCount++;
         }
         else{
-            debitedData[q]=transData[i];
+            debitedData[debitCount]=transData[i];
             totalDebited+=transData[i];
-            q++;
+            debitCount++;
             }
         if(transData[i]>=10000||transData[i]<=-10000)
         {
-            suspiciousAmount[r]=transData[i];
-            r++;
+            suspiciousAmount[suspiciousCount]=transData[i];
+            suspiciousCount++;
         }
 }
     remainingBalance=totalCredited+totalDebited;
-    return {creditedData,debitedData,suspiciousAmount,totalCredited,totalDebited,remainingBalance};
-       
-}
+    return {creditedData,debitedData,suspiciousAmount,totalCredited,totalDebited,remainingBalance,debitCount,creditCount,suspiciousCount};
+        
+    }
 
 console.log(getTransactionDetails(transactionHistory));
 
