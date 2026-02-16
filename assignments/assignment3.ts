@@ -14,7 +14,7 @@ Average Marks: 89.0*/
 
 let studentName:string[]=["Suresh","Mahesh","Naresh"];// array to store student name
 let studentActualMarks:number[]=[75,80,82];//array to store students actuall marks
-let updatedMarks:number[]=[];
+let updatedMarks:number[]=[];// Final array for updated marks
 
 //*******funtion to update marks and store it in another array and priting the final score*********/
 function updateMark(actualMark:number[],addMarks:number):void
