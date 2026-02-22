@@ -1,5 +1,5 @@
 
-/*********check prime number*******************/
+/****************check prime number*******************/
 
 function checkIfPrime(inputNumber:number):string{
     
@@ -14,4 +14,5 @@ function checkIfPrime(inputNumber:number):string{
                             
     }
 console.log(checkIfPrime(10003))
+
 
