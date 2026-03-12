@@ -23,27 +23,26 @@ Explanation: In this case, no transactions are done and the max profit = 0.*/
 //if max price day after min price day, maxprice-min price =profit
 //buy date= min price date, sell date=max price date.
 
-const stockPrice: number[] = [7, 2, 5, 7, 4, 2];
+const stockPrice: number[] = [123, 1, 11, 12, 4, 99];
 
 let buyday:number=0;
-let sellday:number=1
+let sellday:number=1;
 let profit:number=0;
-let temp:number=1;
-let day:number=0;
-
-
+let tempProfit:number=0;
+let buyPrice:number=0;
+let sellPrice:number=0;
 
 for(let i:number=1;i<stockPrice.length;i++){
     if(stockPrice[sellday]>stockPrice[buyday]){
-      profit=stockPrice[sellday]-stockPrice[buyday];
-      console.log(profit);
+      tempProfit=stockPrice[sellday]-stockPrice[buyday];
+      buyPrice=stockPrice[buyday];
+      sellPrice=stockPrice[sellday]
+       if(profit<tempProfit){profit=tempProfit}
     }
     else{buyday=sellday;}
     sellday++;
-
 }
-
-
+console.log('BuyPrice:',buyPrice+" SellPrice:",sellPrice+" Profit:",profit);
 
 
 
